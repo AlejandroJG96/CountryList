@@ -38,6 +38,27 @@ public class ContryListActivity extends AppCompatActivity {
             }
         });
 
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,final int pos, long id) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ContryListActivity.this);
+                builder.setTitle(R.string.confirm);
+                String msg = getResources().getString(R.string.confirm_message);
+                builder.setMessage(msg + country_list.get(pos)+  "?");
+                builder.setPositiveButton(R.string.erase, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        country_list.remove(pos);
+                        adaptador.notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton(android.R.string.cancel,  null);
+                builder.create().show();
+                return true;
+            }
+        });
+
 
 
 
