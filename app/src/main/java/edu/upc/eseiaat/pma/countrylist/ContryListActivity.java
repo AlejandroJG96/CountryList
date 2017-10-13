@@ -30,6 +30,13 @@ public class ContryListActivity extends AppCompatActivity {
         adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, country_list );
         list.setAdapter(adaptador);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+                Toast.makeText(ContryListActivity.this, String.format("Ha escogido '%s'",country_list.get(pos)), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
